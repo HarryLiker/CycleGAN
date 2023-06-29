@@ -16,7 +16,6 @@ eval_data_transforms = tt.Compose([
         tt.Normalize(*stats)
     ])
 
-
 # Денормализация изображений для преобразования в исходный формат
 def denorm(img_tensors):
     return img_tensors * stats[1][0] + stats[0][0]
@@ -50,8 +49,8 @@ def predict_images(imgs_to_eval_path, img_type):
                 if img.mode != 'RGB':
                     img = img.convert(mode='RGB')
 
-                img = eval_data_transforms(img).to(DEVICE)
-                res_img = generator(img)
+                img = eval_data_transforms(img)
+                res_img = generator(img.to(DEVICE))
                 res_img = res_img.detach().cpu()
                 plt.imsave(os.path.join(args.results_path, img_type + '/' + img_name), denorm(res_img.permute(1, 2, 0)).numpy())
                 

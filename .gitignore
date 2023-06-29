@@ -1,2 +1,4 @@
 *.zip
 __pycache__
+datasets/forest_fire
+datasets/horse2zebra

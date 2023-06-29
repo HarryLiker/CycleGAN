@@ -31,35 +31,30 @@ def save_loss_img(losses):
     fig_ax_1.set_title('Generator loss function')
     fig_ax_1.set_xlabel('Epoch')
     fig_ax_1.set_ylabel('Generator loss')
-    plt.xticks(x_epochs)
     plt.plot(x_epochs, losses['generator'])
 
     fig_ax_2 = fg.add_subplot(gs[0, 1])
     fig_ax_2.set_title('Cycle loss function')
     fig_ax_2.set_xlabel('Epoch')
     fig_ax_2.set_ylabel('Cycle loss')
-    plt.xticks(x_epochs)
     plt.plot(x_epochs, losses['cycle'])
 
     fig_ax_3 = fg.add_subplot(gs[0, 2])
     fig_ax_3.set_title('Identity loss function')
     fig_ax_3.set_xlabel('Epoch')
     fig_ax_3.set_ylabel('Identity loss')
-    plt.xticks(x_epochs)
     plt.plot(x_epochs, losses['identity'])
 
     fig_ax_4 = fg.add_subplot(gs[1, 0])
     fig_ax_4.set_title('Total Generator loss function')
     fig_ax_4.set_xlabel('Epoch')
     fig_ax_4.set_ylabel('Total Generator loss')
-    plt.xticks(x_epochs)
     plt.plot(x_epochs, losses['total_generator'])
 
     fig_ax_5 = fg.add_subplot(gs[1, 1:])
     fig_ax_5.set_title('Discriminator loss function')
     fig_ax_5.set_xlabel('Epoch')
     fig_ax_5.set_ylabel('Discriminator loss')
-    plt.xticks(x_epochs)
     plt.plot(x_epochs, losses['discriminator'])
 
     plt.savefig(os.path.join(args.losses_dir, 'loss_img.png'))
@@ -304,6 +299,8 @@ if __name__ == '__main__':
     
     # Трансформация для тестовых данных
     test_data_transforms = tt.Compose([
+            tt.Resize(int(1.12*args.img_size), Image.BICUBIC),
+            tt.CenterCrop(args.img_size),
             tt.ToTensor(),
             tt.Normalize(*stats)
         ])

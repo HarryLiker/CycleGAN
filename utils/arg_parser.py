@@ -12,7 +12,7 @@ def train_parse():
     parser.add_argument('--device',                     type=str,       default='cuda',             help='Device on which calculations will be performed')
     parser.add_argument('--unaligned',                  type=bool,      default=False,              help='Attachment of indexes of images of different types to each other')
     parser.add_argument('--img_size',                   type=int,       default=256,                help='Size of image to be converted. Default = 256')
-    parser.add_argument('--lambda_value',               type=float,     default=10,                 help='Value of lambda. Default = 10')
+    parser.add_argument('--lambda_value',               type=float,     default=10.0,               help='Value of lambda. Default = 10.0')
     parser.add_argument('--datasets_dir',               type=str,       default='./datasets',       help='Directory where datasets are located. Default = ./datasets')
     parser.add_argument('--dataset_name',               type=str,       default='horse2zebra',      help='Name of the dataset to work with. Default = horse2zebras')
     parser.add_argument('--train_hist_dir',             type=str,       default='./train_history',  help='Directory with training history for different datasets')
@@ -45,7 +45,7 @@ def eval_parse():
     parser.add_argument('--imgs_dir',           type=str,       default='./imgs_to_eval',           help='Directory of images to evaluate. Default=./imgs_to_eval')
     parser.add_argument('--device',             type=str,       default='cuda',                     help='Device on which calculations will be performed. Default = cuda')
     parser.add_argument('--results_path',       type=str,       default='./eval_results',           help='Path to result of evaluating')
-    parser.add_argument('--weights_path',       type=str,       default='./weights/horse2zebra/',   help='Path to pretrained model weights with two generators and two discriminators. Default = ./pretrained_weights')
+    parser.add_argument('--weights_path',       type=str,       default='./weights/horse2zebra/',   help='Path to pretrained model weights with two generators and two discriminators. Default = ./weights/horse2zebra')
 
     args = parser.parse_args()
 
