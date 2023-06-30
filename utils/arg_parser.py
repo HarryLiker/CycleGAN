@@ -15,7 +15,7 @@ def train_parse():
     parser.add_argument('--lambda_value',               type=float,     default=10.0,               help='Value of lambda. Default = 10.0')
     parser.add_argument('--datasets_dir',               type=str,       default='./datasets',       help='Directory where datasets are located. Default = ./datasets')
     parser.add_argument('--dataset_name',               type=str,       default='horse2zebra',      help='Name of the dataset to work with. Default = horse2zebras')
-    parser.add_argument('--train_hist_dir',             type=str,       default='./train_history',  help='Directory with training history for different datasets')
+    parser.add_argument('--train_hist_dir',             type=str,       default='./train_history',  help='Directory with training history for different datasets. Default = ./train_history')
     parser.add_argument('--n_imgs_save',                type=int,       default=0,                  help='The number of test images to save at the epoch with results. Default = 0')
     parser.add_argument('--weights_dir',                type=str,       default='./weights',        help='Directory from where you can download or save the weights of various datasets. Default = ./weights')
 
